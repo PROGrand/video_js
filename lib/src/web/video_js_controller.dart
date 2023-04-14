@@ -276,14 +276,6 @@ class VideoJsController {
 
   /// Get Video poster/thumbnail
   onPlayerReady(Function(String) onReady) {
-    final html.Element scriptElement = html.ScriptElement()
-      ..id = "onPlayerReady"
-      ..innerHtml = VideoJsScripts().getPoster(playerId);
-    html.Element? ele = html.querySelector("#onPlayerReady");
-    if (html.querySelector("#onPlayerReady") != null) {
-      ele!.remove();
-    }
-    html.querySelector('body')!.children.add(scriptElement);
     VideoJsResults().listenToValueFromJs(playerId, 'onReady', onReady);
   }
 
